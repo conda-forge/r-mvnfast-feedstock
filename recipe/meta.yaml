@@ -42,7 +42,7 @@ requirements:
     - llvm-openmp  # [osx]
     - r-base
     - {{ native }}gcc-libs         # [win]
-    - r-bh
+    #- r-bh
     - r-rcpp >=0.12.0
     - r-rcpparmadillo
 
@@ -53,7 +53,7 @@ test:
 
 about:
   home: https://github.com/mfasiolo/mvnfast, www.sitmo.com
-  license: GPL-2
+  license: GPL-2.0-or-later
   summary: "Provides computationally efficient tools related to the multivariate normal and Student's t distributions. The main functionalities are: simulating multivariate random vectors, evaluating multivariate normal or Student's t densities and Mahalanobis distances. These tools are very efficient thanks to the use of\
     \ C++ code and of the OpenMP API."
   license_family: GPL2
