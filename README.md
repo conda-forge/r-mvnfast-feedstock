@@ -3,7 +3,7 @@ About r-mvnfast
 
 Home: https://github.com/mfasiolo/mvnfast, www.sitmo.com
 
-Package license: GPL-2
+Package license: GPL-2.0-or-later
 
 Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/r-mvnfast-feedstock/blob/master/LICENSE.txt)
 
