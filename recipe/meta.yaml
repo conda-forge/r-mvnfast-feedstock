@@ -21,32 +21,31 @@ build:
 
 requirements:
   build:
-    - cross-r-base {{ r_base }}  # [build_platform != target_platform]
-    - r-bh                       # [build_platform != target_platform]
-    - r-rcpp                     # [build_platform != target_platform]
-    - r-rcpparmadillo            # [build_platform != target_platform]
-    - {{ compiler('c') }}              # [not win]
-    - {{ compiler('m2w64_c') }}        # [win]
-    - {{ compiler('cxx') }}            # [not win]
-    - {{ compiler('m2w64_cxx') }}      # [win]
+    - cross-r-base {{ r_base }}    # [build_platform != target_platform]
+    - r-bh                         # [build_platform != target_platform]
+    - r-rcpp                       # [build_platform != target_platform]
+    - r-rcpparmadillo              # [build_platform != target_platform]
+    - {{ compiler('c') }}          # [not win]
+    - {{ compiler('m2w64_c') }}    # [win]
+    - {{ compiler('cxx') }}        # [not win]
+    - {{ compiler('m2w64_cxx') }}  # [win]
     - {{ posix }}filesystem        # [win]
     - {{ posix }}make
     - {{ posix }}sed               # [win]
     - {{ posix }}coreutils         # [win]
     - {{ posix }}zip               # [win]
-    - llvm-openmp  # [osx]
   host:
     - libblas
     - liblapack
+    - libgomp                      # [linux]
+    - llvm-openmp                  # [osx]
     - r-base
     - r-bh
     - r-rcpp >=0.12.0
     - r-rcpparmadillo
   run:
-    - llvm-openmp  # [osx]
     - r-base
     - {{ native }}gcc-libs         # [win]
-    #- r-bh
     - r-rcpp >=0.12.0
     - r-rcpparmadillo
 
@@ -56,35 +55,15 @@ test:
     - "\"%R%\" -e \"library('mvnfast')\""  # [win]
 
 about:
-  home: https://github.com/mfasiolo/mvnfast, www.sitmo.com
+  home: https://github.com/mfasiolo/mvnfast
   license: GPL-2.0-or-later
   summary: "Provides computationally efficient tools related to the multivariate normal and Student's t distributions. The main functionalities are: simulating multivariate random vectors, evaluating multivariate normal or Student's t densities and Mahalanobis distances. These tools are very efficient thanks to the use of\
     \ C++ code and of the OpenMP API."
   license_family: GPL2
   license_file:
     - {{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-2
+    - {{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3
 
 extra:
   recipe-maintainers:
     - conda-forge/r
-
-# Package: mvnfast
-# Type: Package
-# Title: Fast Multivariate Normal and Student's t Methods
-# Version: 0.2.5
-# Date: 2018-01-31
-# Authors@R: c(person("Matteo", "Fasiolo", email = "matteo.fasiolo@gmail.com", role = c("aut", "cre")), person("Thijs", " van den Berg", role = c("ctb")))
-# Maintainer: Matteo Fasiolo <matteo.fasiolo@gmail.com>
-# Description: Provides computationally efficient tools related to the multivariate normal and Student's t distributions. The main functionalities are: simulating multivariate random vectors, evaluating multivariate normal or Student's t densities and Mahalanobis distances. These tools are very efficient thanks to the use of C++ code and of the OpenMP API.
-# License: GPL (>= 2.0)
-# URL: https://github.com/mfasiolo/mvnfast, www.sitmo.com
-# Imports: Rcpp (>= 0.12.0)
-# Suggests: knitr, rmarkdown, testthat, mvtnorm, microbenchmark, MASS, plyr, RhpcBLASctl
-# LinkingTo: Rcpp, RcppArmadillo, BH
-# VignetteBuilder: knitr
-# RoxygenNote: 6.0.1
-# NeedsCompilation: yes
-# Packaged: 2018-01-31 13:22:24 UTC; teo
-# Author: Matteo Fasiolo [aut, cre], Thijs van den Berg [ctb]
-# Repository: CRAN
-# Date/Publication: 2018-01-31 18:05:28 UTC
