@@ -6,7 +6,7 @@ Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/r-mvnfast-feeds
 About r-mvnfast
 ---------------
 
-Home: https://github.com/mfasiolo/mvnfast, www.sitmo.com
+Home: https://github.com/mfasiolo/mvnfast
 
 Package license: GPL-2.0-or-later
 
@@ -14,7 +14,7 @@ Summary: Provides computationally efficient tools related to the multivariate no
 About r-mvnfast
 ---------------
 
-Home: https://github.com/mfasiolo/mvnfast, www.sitmo.com
+Home: https://github.com/mfasiolo/mvnfast
 
 Package license: GPL-2.0-or-later
 
