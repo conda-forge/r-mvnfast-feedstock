@@ -12,10 +12,14 @@ source:
   sha256: 8871e0ce54b87afc556fd94ca77c3db72dcbb8c245558287e0fe342e30eec9a0
 
 build:
-  number: 2
+  number: 3
   rpaths:
     - lib/R/lib/
     - lib/
+  missing_dso_whitelist:
+    - '*/R.dll'        # [win]
+    - '*/Rblas.dll'    # [win]
+    - '*/Rlapack.dll'  # [win]
 
 requirements:
   build:
@@ -29,24 +33,27 @@ requirements:
     - {{ stdlib("m2w64_c") }}      # [win]
     - {{ compiler('cxx') }}        # [not win]
     - {{ compiler('m2w64_cxx') }}  # [win]
+    - {{ compiler('fortran') }}    # [osx and arm64]
     - {{ posix }}filesystem        # [win]
     - {{ posix }}make
     - {{ posix }}sed               # [win]
     - {{ posix }}coreutils         # [win]
     - {{ posix }}zip               # [win]
-  host:
-    - libblas
-    - liblapack
-    - libgomp                      # [linux]
     - llvm-openmp                  # [osx]
+  host:
     - r-base
     - r-bh
     - r-rcpp >=0.12.0
     - r-rcpparmadillo
+    - libblas
+    - liblapack
+    - libgomp                      # [linux]
+    - llvm-openmp                  # [osx]
   run:
     - r-base
     - r-rcpp >=0.12.0
     - r-rcpparmadillo
+    - llvm-openmp                  # [osx]
 
 test:
   commands:
